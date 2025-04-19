@@ -425,9 +425,7 @@ footer {
     margin-bottom: var(--spacing-sm);
 }
 
-.footer-links h3,
-.footer-social h3,
-.footer-contact h3 {
+.footer-links h3, .footer-social h3, .footer-contact h3 {
     color: white;
     margin-bottom: var(--spacing-sm);
 }
@@ -470,6 +468,15 @@ footer {
     text-align: center;
     padding-top: var(--spacing-md);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright a {
+    color: var(--primary-color);
+    transition: color var(--transition-fast);
+}
+
+.copyright a:hover {
+    color: var(--light-color);
 }
 
 /* ===== Page Banner ===== */
@@ -646,7 +653,25 @@ footer {
 .fest-description {
     margin-bottom: var(--spacing-md);
     line-height: 1.8;
-}
+    max-width: 100%;
+    word-wrap: break-word;
+    padding: 0 1rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .fest-description {
+      line-height: 1.6;
+      margin-bottom: var(--spacing-sm, 0.75rem);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .fest-description {
+      line-height: 1.5;
+      font-size: 0.95em;
+      padding: 0 0.75rem;
+    }
+  }
 
 .fest-cta {
     display: flex;
