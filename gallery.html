@@ -3,10 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Cruz Ireland</title>
+    <title>Event Galleries - Cruz Ireland</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="description" content="Browse our gallery of car meets and events across Ireland. Download high-quality images from Cork, Dingle, Mondello and more.">
+    <meta name="description" content="Browse our gallery of car meets and events across Ireland. View photos from Cruz Dingle, Cruz Fest, and other automotive gatherings.">
+    <style>
+        /* Additional gallery styles */
+        .event-section {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .event-section:last-child {
+            border-bottom: none;
+        }
+        
+        .event-header {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .event-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .event-header h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .event-section:hover .event-header h2 {
+            color: var(--primary-color);
+        }
+        
+        .event-date {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-date i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .event-description {
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        /* Loading animation */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .loading-shimmer {
+            background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        
+        /* Event count badge */
+        .event-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,6 +105,7 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="features.html">Features</a></li>
                     <li><a href="events.html">Events</a></li>
                 </ul>
                 <div class="hamburger">
@@ -33,7 +119,7 @@
 
     <section class="page-banner">
         <div class="banner-content">
-            <h1>Gallery</h1>
+            <h1>Event Galleries</h1>
             <p>Explore our collection of car meets across Ireland</p>
         </div>
     </section>
@@ -42,68 +128,238 @@
         <div class="container">
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">All Events</button>
-                <button class="filter-btn" data-filter="cork">Cork</button>
-                <button class="filter-btn" data-filter="dingle">Dingle</button>
-                <button class="filter-btn" data-filter="mondello">Mondello</button>
-                <button class="filter-btn" data-filter="other">Other</button>
+                <button class="filter-btn" data-filter="86fest">86 Fest 2024</button>
+                <button class="filter-btn" data-filter="dingle2">Dingle 2.0</button>
+                <button class="filter-btn" data-filter="rally">Rally of the Lakes 2024</button>
+                <button class="filter-btn" data-filter="tarbert">Tarbert April 2024</button>
+                <button class="filter-btn" data-filter="sept2023">Cruz September 2023</button>
+                <button class="filter-btn" data-filter="lzfest">Lz Fest 2023</button>
+                <button class="filter-btn" data-filter="anniversary">Cruz 1 Year Anniversary</button>
+                <button class="filter-btn" data-filter="dingle1">Cruz Dingle 1.0</button>
             </div>
         </div>
     </section>
 
-    <section class="gallery-section" id="cork">
+    <!-- 86 Fest 2024 -->
+    <section class="event-section gallery-section" id="86fest">
         <div class="container">
-            <h2>Cork Meets</h2>
+            <div class="event-header">
+                <h2>86 Fest 2024</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> August 2024
+                </div>
+                <div class="event-description">
+                    <p>A celebration of the iconic Toyota 86 and its derivatives, bringing together AE86s, GT86s, and GR86s from across Ireland for a day of automotive appreciation.</p>
+                </div>
+                <div class="event-count">26 Photos</div>
+            </div>
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="cork">
+                <!-- 86 Fest 2024 Photos -->
+                <div class="gallery-item" data-category="86fest">
                     <div class="image-container">
-                        <img src="images/cork_night.jpg" alt="Cork Night Meet">
+                        <img src="images/86 Fest 2024/_DSC6563.jpg" alt="86 Fest 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Cork Night Meet</h3>
-                                <p>Cork City, 2024</p>
-                                <a href="images/cork_night.jpg" download="cork_night.jpg" class="download-btn">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6563.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="cork">
+                <div class="gallery-item" data-category="86fest">
                     <div class="image-container">
-                        <img src="images/Corknight2.jpg" alt="Cork Night Meet">
+                        <img src="images/86 Fest 2024/_DSC6569.jpg" alt="86 Fest 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Cork Night Meet</h3>
-                                <p>Cork City, 2024</p>
-                                <a href="images/Corknight2.jpg" download class="download-btn">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6569.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="cork">
+                <div class="gallery-item" data-category="86fest">
                     <div class="image-container">
-                        <img src="images/japCork.jpg" alt="JDM Meet Cork">
+                        <img src="images/86 Fest 2024/_DSC6582.jpg" alt="86 Fest 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>JDM Meet</h3>
-                                <p>Cork, 2024</p>
-                                <a href="images/japCork.jpg" download class="download-btn">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6582.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="cork">
+                <div class="gallery-item" data-category="86fest">
                     <div class="image-container">
-                        <img src="images/jpaCork2.jpg" alt="JDM Meet Cork">
+                        <img src="images/86 Fest 2024/_DSC6583.jpg" alt="86 Fest 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>JDM Meet</h3>
-                                <p>Cork, 2024</p>
-                                <a href="images/jpaCork2.jpg" download class="download-btn">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6583.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6585.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6585.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6589.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6589.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6591.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6591.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6593.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6593.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6597.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6597.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6607.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6607.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6609.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6609.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6619.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6619.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More 86 Fest photos -->
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6637.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6637.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6643.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6643.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="86fest">
+                    <div class="image-container">
+                        <img src="images/86 Fest 2024/_DSC6650.jpg" alt="86 Fest 2024" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>86 Fest 2024</h3>
+                                <p>August 2024</p>
+                                <a href="images/86 Fest 2024/_DSC6650.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
@@ -114,88 +370,226 @@
         </div>
     </section>
 
-    <section class="gallery-section" id="dingle">
+    <!-- Dingle 2.0 -->
+    <section class="event-section gallery-section" id="dingle2">
         <div class="container">
-            <h2>Dingle Meets</h2>
+            <div class="event-header">
+                <h2>Dingle 2.0</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> July 2024
+                </div>
+                <div class="event-description">
+                    <p>Our return to the scenic Dingle Peninsula, featuring an even larger gathering of Ireland's finest cars against the backdrop of one of the country's most beautiful coastal routes.</p>
+                </div>
+                <div class="event-count">40+ Photos</div>
+            </div>
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="dingle">
+                <!-- Dingle 2.0 Photos -->
+                <div class="gallery-item" data-category="dingle2">
                     <div class="image-container">
-                        <img src="images/dingle1.jpg" alt="Dingle Meet">
+                        <img src="images/Dingle 2.0 photos/_DSC5138.jpg" alt="Dingle 2.0" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Dingle Car Meet</h3>
-                                <p>Dingle, 2024</p>
-                                <a href="images/dingle1.jpg" download class="download-btn">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5138.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="dingle">
+                <div class="gallery-item" data-category="dingle2">
                     <div class="image-container">
-                        <img src="images/dingle2.jpg" alt="Dingle Meet">
+                        <img src="images/Dingle 2.0 photos/_DSC5141.jpg" alt="Dingle 2.0" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Dingle Car Meet</h3>
-                                <p>Dingle, 2024</p>
-                                <a href="images/dingle2.jpg" download class="download-btn">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5141.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="dingle">
+                <div class="gallery-item" data-category="dingle2">
                     <div class="image-container">
-                        <img src="images/dingle3.jpg" alt="Dingle Meet">
+                        <img src="images/Dingle 2.0 photos/_DSC5142.jpg" alt="Dingle 2.0" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Dingle Car Meet</h3>
-                                <p>Dingle, 2024</p>
-                                <a href="images/dingle3.jpg" download class="download-btn">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5142.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="dingle">
+                <div class="gallery-item" data-category="dingle2">
                     <div class="image-container">
-                        <img src="images/dingle4.jpg" alt="Dingle Meet">
+                        <img src="images/Dingle 2.0 photos/_DSC5144.jpg" alt="Dingle 2.0" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Dingle Car Meet</h3>
-                                <p>Dingle, 2024</p>
-                                <a href="images/dingle4.jpg" download class="download-btn">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5144.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="dingle">
+                <div class="gallery-item" data-category="dingle2">
                     <div class="image-container">
-                        <img src="images/dingle5.jpg" alt="Dingle Meet">
+                        <img src="images/Dingle 2.0 photos/_DSC5150.jpg" alt="Dingle 2.0" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Dingle Car Meet</h3>
-                                <p>Dingle, 2024</p>
-                                <a href="images/dingle5.jpg" download class="download-btn">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5150.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="dingle">
+                <div class="gallery-item" data-category="dingle2">
                     <div class="image-container">
-                        <img src="images/dingle_180.jpg" alt="Dingle Meet - 180SX">
+                        <img src="images/Dingle 2.0 photos/_DSC5158.jpg" alt="Dingle 2.0" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Dingle Car Meet - 180SX</h3>
-                                <p>Dingle, 2024</p>
-                                <a href="images/dingle_180.jpg" download class="download-btn">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5158.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5191.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5191.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5192.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5192.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5193.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5193.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5195.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5195.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5199.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5199.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5202.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5202.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More Dingle 2.0 photos -->
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5203.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5203.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5205.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5205.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle2">
+                    <div class="image-container">
+                        <img src="images/Dingle 2.0 photos/_DSC5208.jpg" alt="Dingle 2.0" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Dingle 2.0</h3>
+                                <p>July 2024</p>
+                                <a href="images/Dingle 2.0 photos/_DSC5208.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
@@ -206,60 +600,56 @@
         </div>
     </section>
 
-    <section class="gallery-section" id="mondello">
+    <!-- Rally of the Lakes 2024 -->
+    <section class="event-section gallery-section" id="rally">
         <div class="container">
-            <h2>Mondello Meets</h2>
+            <div class="event-header">
+                <h2>Rally of the Lakes 2024</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> May 2024
+                </div>
+                <div class="event-description">
+                    <p>Cruz Ireland's presence at the legendary Rally of the Lakes in Killarney, capturing the excitement and atmosphere of one of Ireland's premier motorsport events.</p>
+                </div>
+            </div>
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="mondello">
+                <!-- Rally of the Lakes 2024 Photos -->
+                <div class="gallery-item" data-category="rally">
                     <div class="image-container">
-                        <img src="images/mondello_cam.jpg" alt="Mondello Park">
+                        <img src="images/Rally of the lake 2024/DSC04522.jpg" alt="Rally of the Lakes 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Mondello Park Meet</h3>
-                                <p>Mondello, 2024</p>
-                                <a href="images/mondello_cam.jpg" download class="download-btn">
+                                <h3>Rally of the Lakes</h3>
+                                <p>May 2024</p>
+                                <a href="images/Rally of the lake 2024/DSC04522.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="mondello">
+                <div class="gallery-item" data-category="rally">
                     <div class="image-container">
-                        <img src="images/mondello_350z.jpg" alt="Mondello Park - 350Z">
+                        <img src="images/Rally of the lake 2024/DSC04525.jpg" alt="Rally of the Lakes 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Mondello Park - 350Z</h3>
-                                <p>Mondello, 2024</p>
-                                <a href="images/mondello_350z.jpg" download class="download-btn">
+                                <h3>Rally of the Lakes</h3>
+                                <p>May 2024</p>
+                                <a href="images/Rally of the lake 2024/DSC04525.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="mondello">
+                <div class="gallery-item" data-category="rally">
                     <div class="image-container">
-                        <img src="images/Mondello2.jpg" alt="Mondello Park">
+                        <img src="images/Rally of the lake 2024/DSC04528.jpg" alt="Rally of the Lakes 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Mondello Park Meet</h3>
-                                <p>Mondello, 2024</p>
-                                <a href="images/Mondello2.jpg" download class="download-btn">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="mondello">
-                    <div class="image-container">
-                        <img src="images/Modnello.jpg" alt="Mondello Park">
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <h3>Mondello Park Meet</h3>
-                                <p>Mondello, 2024</p>
-                                <a href="images/Modnello.jpg" download class="download-btn">
+                                <h3>Rally of the Lakes</h3>
+                                <p>May 2024</p>
+                                <a href="images/Rally of the lake 2024/DSC04528.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
@@ -270,144 +660,720 @@
         </div>
     </section>
 
-    <section class="gallery-section" id="featured-cars">
+    <!-- Tarbert April 2024 -->
+    <section class="event-section gallery-section" id="tarbert">
         <div class="container">
-            <h2>Featured Cars</h2>
+            <div class="event-header">
+                <h2>Tarbert April 2024</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> April 2024
+                </div>
+                <div class="event-description">
+                    <p>A spring gathering in the charming coastal town of Tarbert, bringing together car enthusiasts from across Munster for a relaxed meet and cruise along the Shannon Estuary.</p>
+                </div>
+            </div>
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="other">
+                <!-- Tarbert April 2024 Photos -->
+                <div class="gallery-item" data-category="tarbert">
                     <div class="image-container">
-                        <img src="images/r34.jpg" alt="Nissan Skyline R34">
+                        <img src="images/Tarbert April 2024/DSC04344.jpg" alt="Tarbert April 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Nissan Skyline R34</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/r34.jpg" download class="download-btn">
+                                <h3>Tarbert Meet</h3>
+                                <p>April 2024</p>
+                                <a href="images/Tarbert April 2024/DSC04344.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="tarbert">
                     <div class="image-container">
-                        <img src="images/r342.jpg" alt="Nissan Skyline R34">
+                        <img src="images/Tarbert April 2024/DSC04348.jpg" alt="Tarbert April 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Nissan Skyline R34</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/r342.jpg" download class="download-btn">
+                                <h3>Tarbert Meet</h3>
+                                <p>April 2024</p>
+                                <a href="images/Tarbert April 2024/DSC04348.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="tarbert">
                     <div class="image-container">
-                        <img src="images/r32.jpg" alt="Nissan Skyline R32">
+                        <img src="images/Tarbert April 2024/DSC04350.jpg" alt="Tarbert April 2024" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Nissan Skyline R32</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/r32.jpg" download class="download-btn">
+                                <h3>Tarbert Meet</h3>
+                                <p>April 2024</p>
+                                <a href="images/Tarbert April 2024/DSC04350.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+            </div>
+        </div>
+    </section>
+
+    <!-- Cruz September 2023 Meet -->
+    <section class="event-section gallery-section" id="sept2023">
+        <div class="container">
+            <div class="event-header">
+                <h2>Cruz September 2023 Meet</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> September 2023
+                </div>
+                <div class="event-description">
+                    <p>Our autumn gathering brought together a diverse collection of vehicles for a day of automotive appreciation and community building as the summer season came to a close.</p>
+                </div>
+                <div class="event-count">25 Photos</div>
+            </div>
+            <div class="gallery-grid">
+                <!-- September 2023 Photos -->
+                <div class="gallery-item" data-category="sept2023">
                     <div class="image-container">
-                        <img src="images/s15.jpg" alt="Nissan Silvia S15">
+                        <img src="images/Cruz September 2023 meet/DSC02626.jpg" alt="Cruz September 2023 Meet" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Nissan Silvia S15</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/s15.jpg" download class="download-btn">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02626.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="sept2023">
                     <div class="image-container">
-                        <img src="images/s14.jpg" alt="Nissan Silvia S14">
+                        <img src="images/Cruz September 2023 meet/DSC02628.jpg" alt="Cruz September 2023 Meet" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Nissan Silvia S14</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/s14.jpg" download class="download-btn">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02628.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="sept2023">
                     <div class="image-container">
-                        <img src="images/rx7.jpg" alt="Mazda RX7">
+                        <img src="images/Cruz September 2023 meet/DSC02629.jpg" alt="Cruz September 2023 Meet" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Mazda RX7</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/rx7.jpg" download class="download-btn">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02629.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="sept2023">
                     <div class="image-container">
-                        <img src="images/e36.jpg" alt="BMW E36">
+                        <img src="images/Cruz September 2023 meet/DSC02630.jpg" alt="Cruz September 2023 Meet" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>BMW E36</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/e36.jpg" download class="download-btn">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02630.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="sept2023">
                     <div class="image-container">
-                        <img src="images/e362.jpg" alt="BMW E36">
+                        <img src="images/Cruz September 2023 meet/DSC02633.jpg" alt="Cruz September 2023 Meet" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>BMW E36</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/e362.jpg" download class="download-btn">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02633.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="sept2023">
                     <div class="image-container">
-                        <img src="images/e46.jpg" alt="BMW E46">
+                        <img src="images/Cruz September 2023 meet/DSC02640.jpg" alt="Cruz September 2023 Meet" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>BMW E46</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/e46.jpg" download class="download-btn">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02640.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="other">
+                <div class="gallery-item" data-category="sept2023">
                     <div class="image-container">
-                        <img src="images/jzx.jpg" alt="Toyota JZX">
+                        <img src="images/Cruz September 2023 meet/DSC02645.jpg" alt="Cruz September 2023 Meet" loading="eager">
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Toyota JZX</h3>
-                                <p>Cruz Ireland Meet</p>
-                                <a href="images/jzx.jpg" download class="download-btn">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02645.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="sept2023">
+                    <div class="image-container">
+                        <img src="images/Cruz September 2023 meet/DSC02647.jpg" alt="Cruz September 2023 Meet" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02647.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="sept2023">
+                    <div class="image-container">
+                        <img src="images/Cruz September 2023 meet/DSC02649.jpg" alt="Cruz September 2023 Meet" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02649.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="sept2023">
+                    <div class="image-container">
+                        <img src="images/Cruz September 2023 meet/DSC02662.jpg" alt="Cruz September 2023 Meet" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02662.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More September 2023 photos -->
+                <div class="gallery-item" data-category="sept2023">
+                    <div class="image-container">
+                        <img src="images/Cruz September 2023 meet/DSC02671.jpg" alt="Cruz September 2023 Meet" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02671.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="sept2023">
+                    <div class="image-container">
+                        <img src="images/Cruz September 2023 meet/DSC02673.jpg" alt="Cruz September 2023 Meet" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>September Meet</h3>
+                                <p>September 2023</p>
+                                <a href="images/Cruz September 2023 meet/DSC02673.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lz Fest 2023 Clubstand -->
+    <section class="event-section gallery-section" id="lzfest">
+        <div class="container">
+            <div class="event-header">
+                <h2>Lz Fest 2023 Clubstand</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> August 2023
+                </div>
+                <div class="event-description">
+                    <p>Cruz Ireland's official clubstand at Lz Fest 2023, showcasing some of the finest cars from our community at one of the country's largest automotive festivals.</p>
+                </div>
+            </div>
+            <div class="gallery-grid">
+                <!-- Lz Fest 2023 Clubstand Photos -->
+                <div class="gallery-item" data-category="lzfest">
+                    <div class="image-container">
+                        <img src="images/Lz Fest 2023 clubstand/DSC01847.jpg" alt="Lz Fest 2023 Clubstand" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Lz Fest Clubstand</h3>
+                                <p>August 2023</p>
+                                <a href="images/Lz Fest 2023 clubstand/DSC01847.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="lzfest">
+                    <div class="image-container">
+                        <img src="images/Lz Fest 2023 clubstand/DSC01855.jpg" alt="Lz Fest 2023 Clubstand" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Lz Fest Clubstand</h3>
+                                <p>August 2023</p>
+                                <a href="images/Lz Fest 2023 clubstand/DSC01855.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="lzfest">
+                    <div class="image-container">
+                        <img src="images/Lz Fest 2023 clubstand/DSC01860.jpg" alt="Lz Fest 2023 Clubstand" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Lz Fest Clubstand</h3>
+                                <p>August 2023</p>
+                                <a href="images/Lz Fest 2023 clubstand/DSC01860.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cruz 1 Year Anniversary -->
+    <section class="event-section gallery-section" id="anniversary">
+        <div class="container">
+            <div class="event-header">
+                <h2>Cruz 1 Year Anniversary</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> July 2023
+                </div>
+                <div class="event-description">
+                    <p>Celebrating one year since the founding of Cruz Ireland with a special gathering that brought together members and supporters to reflect on our journey and look forward to the future.</p>
+                </div>
+                <div class="event-count">24 Photos</div>
+            </div>
+            <div class="gallery-grid">
+                <!-- 1 Year Anniversary Photos -->
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02198.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02198.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02201.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02201.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02202.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02202.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02203.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02203.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02204.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02204.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02205.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02205.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02206.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02206.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02207.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02207.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02210.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02210.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02211.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02211.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More 1 Year Anniversary photos -->
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02212.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02212.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anniversary">
+                    <div class="image-container">
+                        <img src="images/Cruz 1 year anniversary meet/DSC02216.jpg" alt="Cruz 1 Year Anniversary" loading="eager">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>1 Year Anniversary</h3>
+                                <p>July 2023</p>
+                                <a href="images/Cruz 1 year anniversary meet/DSC02216.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cruz Dingle 1.0 -->
+    <section class="event-section gallery-section" id="dingle1">
+        <div class="container">
+            <div class="event-header">
+                <h2>Cruz Dingle 1.0</h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar-alt"></i> June 2023
+                </div>
+                <div class="event-description">
+                    <p>Our inaugural trip to the stunning Dingle Peninsula, where a convoy of exceptional cars took on the winding coastal roads and breathtaking scenery of this iconic Irish destination.</p>
+                </div>
+            </div>
+            <div class="gallery-grid">
+                <!-- Dingle 1.0 Photos -->
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01177.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01177.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01186.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01186.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01188.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01188.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01248.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01248.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01252.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01252.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01255.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01255.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01257.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01257.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01260.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01260.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01263.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01263.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01267.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01267.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01274.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01274.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01275.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01275.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01276.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01276.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01277.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01277.jpg" download class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dingle1">
+                    <div class="image-container">
+                        <img src="images/Cruz Dingle 1.0/DSC01280.jpg" alt="Cruz Dingle 1.0">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Cruz Dingle 1.0</h3>
+                                <p>June 2023</p>
+                                <a href="images/Cruz Dingle 1.0/DSC01280.jpg" download class="download-btn">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             </div>
@@ -429,6 +1395,7 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="features.html">Features</a></li>
                         <li><a href="events.html">Events</a></li>
                     </ul>
                 </div>
