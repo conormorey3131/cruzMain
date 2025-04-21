@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slick's E36: Functional Aggression - Cruz Ireland</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="An in-depth look at Slick's meticulously built BMW E36 featuring a custom aero package, race-inspired interior, and performance upgrades.">
+    <style>
+        /* Feature-specific styles */
+        .feature-article {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .feature-hero {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .feature-hero img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-hero-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .feature-header {
+            margin-bottom: 2rem;
+        }
+        
+        .feature-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #6c757d;
+        }
+        
+        .feature-meta span {
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-meta i {
+            margin-right: 0.5rem;
+        }
+        
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-tag {
+            background-color: #f1f1f1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #333;
+        }
+        
+        .feature-content {
+            line-height: 1.8;
+        }
+        
+        .feature-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .feature-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .feature-gallery {
+            margin: 2.5rem 0;
+        }
+        
+        .feature-gallery h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.02);
+        }
+        
+        .feature-quote {
+            border-left: 4px solid #e63946;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .feature-specs {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .feature-specs h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .spec-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .spec-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        
+        .feature-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .feature-share {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-share span {
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .share-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e63946;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .share-button:hover {
+            background-color: #1d3557;
+        }
+        
+        .related-features {
+            margin-top: 2rem;
+        }
+        
+        .related-features h3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .related-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .related-image {
+            width: 100px;
+            height: 70px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .related-title {
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .related-item:hover .related-title {
+            color: #e63946;
+        }
+        
+        @media (max-width: 768px) {
+            .specs-grid,
+            .gallery-grid,
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-header h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .feature-meta span {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../IMG_9075.PNG" alt="Cruz Ireland Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li><a href="../features.html" class="active">Features</a></li>
+                    <li><a href="../events.html">Events</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="banner-content">
+            <h1>Featured Cars</h1>
+            <p>In-depth spotlights on unique builds from the Cruz Ireland community</p>
+        </div>
+    </section>
+
+    <article class="feature-article">
+        <div class="feature-hero">
+            <img src="../images/e36.jpg" alt="Slick's BMW E36 with large rear wing">
+            <div class="feature-hero-caption">Slick's E36 combines aggressive styling with functional aerodynamics</div>
+        </div>
+        
+        <div class="feature-header">
+            <h1>Slick's E36: Functional Aggression</h1>
+            <div class="feature-meta">
+                <span><i class="far fa-calendar"></i> April 21, 2025</span>
+                <span><i class="far fa-user"></i> by Cruz Ireland</span>
+                <span><i class="far fa-clock"></i> 8 min read</span>
+            </div>
+            <div class="feature-tags">
+                <span class="feature-tag">BMW</span>
+                <span class="feature-tag">E36</span>
+                <span class="feature-tag">Track Build</span>
+                <span class="feature-tag">Aero</span>
+                <span class="feature-tag">Irish Builds</span>
+            </div>
+        </div>
+        
+        <div class="feature-content">
+            <p>In the world of automotive enthusiasm, there exists a delicate balance between form and function. Some builds lean heavily toward show-stopping aesthetics, while others prioritize performance at the expense of visual appeal. But occasionally, a car emerges that masterfully blends both worlds—a vehicle that turns heads not just for its aggressive appearance, but because every visual element serves a purpose. Slick's BMW E36 is precisely such a creation.</p>
+            
+            <p>This burgundy beast, adorned with a massive rear wing and widened fenders, isn't just built to look menacing in parking lots. It's a purpose-built machine that regularly carves corners at track days while maintaining enough civility to be driven on public roads. The owner, known as "Slick" in the Irish car scene, has spent years refining this E36 into what you see today—a perfect embodiment of functional aggression.</p>
+            
+            <div class="feature-quote">
+                "I didn't build this car to sit pretty at shows. Every modification has a purpose, but that doesn't mean it can't look good doing its job."
+            </div>
+            
+            <h2>The Evolution of a Vision</h2>
+            
+            <p>What started as a relatively stock E36 325i has evolved through multiple iterations over the years. Slick purchased the car back in 2018, initially drawn to the platform for its balance, tunability, and the availability of parts. The first year was spent addressing maintenance issues and making minor modifications, but the vision was always clear: create a dual-purpose vehicle that could dominate track days while remaining streetable.</p>
+            
+            <p>The transformation began in earnest during the winter of 2019, when the car was stripped down to begin its metamorphosis. The first major upgrades focused on suspension and handling, with a full coilover setup, reinforced subframes, and upgraded bushings throughout. Power mods were kept relatively modest at this stage, with the focus being on creating a balanced package.</p>
+            
+            <div class="feature-gallery">
+                <h2>The Build Process</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="../images/e362.jpg" alt="Side profile of Slick's E36">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="../images/e36.jpg" alt="Rear view of Slick's E36">
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Aerodynamics: Form Following Function</h2>
+            
+            <p>The most striking aspect of this build is undoubtedly its aerodynamic package. The massive GT-style rear wing isn't just for show—it's carefully positioned to provide maximum downforce at track speeds. The front splitter and side skirts work in harmony with the wing to create a balanced aero package that keeps the car planted through high-speed corners.</p>
+            
+            <p>The widened fenders aren't merely aesthetic either; they accommodate the wider track and larger wheels necessary for improved grip. Every vent, scoop, and contour on this car serves a purpose, whether it's cooling, airflow management, or downforce generation.</p>
+            
+            <h2>Power and Performance</h2>
+            
+            <p>While the exterior modifications might steal the spotlight, what's under the hood is equally impressive. The original M50 engine has been rebuilt with forged internals, allowing it to handle significantly more power reliably. A custom turbo setup pushes the output to approximately 450 horsepower—more than enough to make this E36 a force to be reckoned with on both street and track.</p>
+            
+            <p>The power is managed through a reinforced drivetrain, featuring a strengthened transmission, upgraded clutch, and limited-slip differential. The braking system has been completely overhauled with larger calipers, slotted rotors, and high-temperature pads to ensure the car stops as well as it goes.</p>
+            
+            <div class="feature-specs">
+                <h3>Build Specifications</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Engine:</span>
+                        Turbocharged M50 with forged internals
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Power:</span>
+                        Approximately 450hp
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Suspension:</span>
+                        Custom coilover setup with adjustable damping
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Wheels:</span>
+                        18" forged wheels with 265/35 semi-slick tires
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Brakes:</span>
+                        6-piston front calipers, 4-piston rear
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Aero:</span>
+                        Custom front splitter, side skirts, and GT wing
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Weight:</span>
+                        1,280kg (approximately)
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Interior:</span>
+                        Half cage, racing seats, harnesses
+                    </div>
+                </div>
+            </div>
+            
+            <h2>The Driver's Environment</h2>
+            
+            <p>Inside, the car strikes a balance between race car functionality and street car comfort. A half cage provides additional rigidity and safety, while racing seats and harnesses keep the driver firmly in place during aggressive driving. The dashboard remains largely intact, though supplemented with additional gauges to monitor vital engine parameters.</p>
+            
+            <p>The rear seats have been removed to save weight, replaced with a clean panel that houses fire suppression equipment and additional storage for track day essentials. Despite these race-oriented modifications, the car retains amenities like air conditioning and a sound system for street driving comfort.</p>
+            
+            <h2>On Track Performance</h2>
+            
+            <p>This E36 isn't just for show—it regularly participates in track days across Ireland and has even made appearances at events in the UK. Its balanced setup allows it to punch well above its weight, often outpacing cars with significantly more power. The combination of mechanical grip, aerodynamic downforce, and a well-sorted chassis makes it particularly formidable on technical circuits.</p>
+            
+            <p>Slick has honed his driving skills alongside developing the car, resulting in impressive lap times that showcase both the car's capabilities and his abilities behind the wheel. The symbiotic relationship between driver and machine is evident in how confidently the car is pushed to its limits.</p>
+            
+            <h2>Community Impact</h2>
+            
+            <p>Beyond its performance credentials, this E36 has become something of an icon in the Irish car scene. It serves as inspiration for other builders, demonstrating that with vision, dedication, and skill, it's possible to create a truly special vehicle without unlimited resources.</p>
+            
+            <p>Slick is generous with his knowledge, often helping other enthusiasts with their projects and sharing the lessons learned throughout his build process. This willingness to contribute to the community has earned him and his car respect that transcends the impressive specifications and performance figures.</p>
+            
+            <div class="feature-quote">
+                "The best part of building this car has been the people I've met along the way. The Irish car community is something special, and I'm proud to be a part of it."
+            </div>
+            
+            <h2>Future Plans</h2>
+            
+            <p>As with any passionate build, this E36 is never truly "finished." Slick has plans for further refinements, including aerodynamic tweaks based on data gathered during track sessions, potential power increases, and weight reduction measures.</p>
+            
+            <p>The goal remains the same: continue improving the car's performance while maintaining its dual-purpose nature. It's this commitment to evolution that keeps the build fresh and exciting, both for Slick and for those who follow its progress.</p>
+            
+            <h2>Conclusion: A Blueprint for Balanced Building</h2>
+            
+            <p>Slick's E36 stands as a testament to what can be achieved when form and function are given equal consideration. It's a car that performs as aggressively as it looks, with every modification serving a purpose beyond mere aesthetics.</p>
+            
+            <p>In a world where car builds often lean heavily toward either show or go, this E36 reminds us that the most compelling vehicles are those that excel at both. It's not just a car—it's a rolling philosophy, a statement that performance and presence can coexist in perfect harmony.</p>
+            
+            <p>For those fortunate enough to see this burgundy BMW in person at Cruz Ireland events, take a moment to appreciate the details. Behind every vent, every curve, and every component is a story of purposeful engineering and passionate craftsmanship. That's what makes Slick's E36 not just another modified BMW, but a true embodiment of functional aggression.</p>
+        </div>
+        
+        <div class="feature-footer">
+            <div class="feature-share">
+                <span>Share this feature:</span>
+                <div class="share-buttons">
+                    <a href="#" class="share-button"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-button"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-button"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="share-button"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            
+            <div class="related-features">
+                <h3>Related Features</h3>
+                <div class="related-grid">
+                    <!-- These will be populated as more features are added -->
+                    <div class="related-item">
+                        <div class="related-image">
+                            <img src="../images/rx7.jpg" alt="Mazda RX7">
+                        </div>
+                        <div class="related-info">
+                            <a href="#" class="related-title">Coming Soon: The Screaming Rotary - Ireland's Wildest RX7</a>
+                        </div>
+                    </div>
+                    <div class="related-item">
+                        <div class="related-image">
+                            <img src="../images/s15.jpg" alt="Nissan Silvia S15">
+                        </div>
+                        <div class="related-info">
+                            <a href="#" class="related-title">Coming Soon: S15 Perfection - The Art of Subtle Modification</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../IMG_9075.PNG" alt="Cruz Ireland Logo">
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../gallery.html">Gallery</a></li>
+                        <li><a href="../features.html">Features</a></li>
+                        <li><a href="../events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/cruz.irl/" target="_blank">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@cruzireland1" target="_blank">
+                            <i class="fab fa-tiktok"></i> TikTok
+                        </a>
+                        <a href="https://www.facebook.com/events/1981486229046977" target="_blank">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: cruzireland1@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Cruz Ireland. All Rights Reserved. Powered by <a href="https://moreydigital.ie" target="_blank">Morey Digital</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
