@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Masonry Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 20px;
+      background: #f5f5f5;
+    }
+
+    h2 {
+      margin: 40px 0 20px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .gallery {
+      column-count: 4;
+      column-gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      display: block;
+      break-inside: avoid;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 1200px) {
+      .gallery {
+        column-count: 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Event 1: Summer Car Show</h2>
+  <div class="gallery">
+    <img src="https://source.unsplash.com/400x600/?car,show,1" alt="">
+    <img src="https://source.unsplash.com/400x500/?car,meet,2" alt="">
+    <img src="https://source.unsplash.com/400x700/?car,modified,3" alt="">
+    <img src="https://source.unsplash.com/400x550/?car,stance,4" alt="">
+    <img src="https://source.unsplash.com/400x500/?car,static,5" alt="">
+  </div>
+
+  <h2>Event 2: Night Meet</h2>
+  <div class="gallery">
+    <img src="https://source.unsplash.com/400x600/?car,night,6" alt="">
+    <img src="https://source.unsplash.com/400x650/?car,lights,7" alt="">
+    <img src="https://source.unsplash.com/400x500/?car,underglow,8" alt="">
+    <img src="https://source.unsplash.com/400x550/?car,street,9" alt="">
+    <img src="https://source.unsplash.com/400x500/?car,neon,10" alt="">
+  </div>
+
+  <h2>Event 3: Track Day</h2>
+  <div class="gallery">
+    <img src="https://source.unsplash.com/400x600/?car,racing,11" alt="">
+    <img src="https://source.unsplash.com/400x550/?car,track,12" alt="">
+    <img src="https://source.unsplash.com/400x700/?car,speed,13" alt="">
+    <img src="https://source.unsplash.com/400x500/?car,corner,14" alt="">
+    <img src="https://source.unsplash.com/400x600/?car,apex,15" alt="">
+  </div>
+
+</body>
+</html>
