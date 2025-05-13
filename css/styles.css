@@ -6,11 +6,15 @@ Cruz Ireland Website Styles
 :root {
     /* Colors based on logo.jpg */
     --primary-color: #e63946;
-    --secondary-color: #1d3557;
+    --secondary-color: #9C3BDF;
     --accent-color: #457b9d;
     --light-color: #f1faee;
-    --dark-color: #0d1b2a;
-    --gray-color: #6c757d;
+    --dark-color: #2F4F4F;
+    /* Inverted colors for dark theme */
+    --bg-color: #121212; /* Dark background */
+    --text-color: #f1faee; /* Light text */
+    --card-bg: #1e1e1e; /* Slightly lighter than background for cards */
+    --gray-color: #a0a0a0; /* Lighter gray for better visibility */
     --success-color: #28a745;
     --warning-color: #ffc107;
     --danger-color: #dc3545;
@@ -60,8 +64,8 @@ html {
 body {
     font-family: var(--body-font);
     line-height: 1.6;
-    color: var(--dark-color);
-    background-color: var(--light-color);
+    color: var(--text-color);
+    background-color: var(--bg-color);
     overflow-x: hidden;
 }
 
@@ -70,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: var(--spacing-sm);
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 h1 {
@@ -90,7 +94,7 @@ h2::after {
     left: 0;
     width: 60px;
     height: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 h3 {
@@ -108,7 +112,7 @@ a {
 }
 
 a:hover {
-    color: var(--secondary-color);
+    color: var(--light-color);
 }
 
 img {
@@ -170,8 +174,8 @@ section {
 
 /* ===== Header & Navigation ===== */
 header {
-    background-color: white;
-    box-shadow: var(--shadow-sm);
+    background-color: var(--bg-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
     left: 0;
@@ -207,7 +211,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--secondary-color);
+    color: var(--text-color);
     font-weight: 600;
     position: relative;
 }
@@ -238,7 +242,7 @@ nav {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: var(--secondary-color);
+    background-color: var(--text-color);
     margin-bottom: 5px;
     border-radius: 3px;
     transition: all var(--transition-fast);
@@ -275,6 +279,10 @@ nav {
 }
 
 /* ===== About Section ===== */
+.about {
+    background-color: var(--bg-color);
+}
+
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -293,7 +301,7 @@ nav {
 
 /* ===== Cruz Fest Section ===== */
 .cruz-fest {
-    background-color: var(--secondary-color);
+    background-color: #2F4F4F;
     color: white;
 }
 
@@ -336,19 +344,26 @@ nav {
     box-shadow: var(--shadow-md);
 }
 
-/* ===== Gallery Preview ===== */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
+/* ===== Gallery Preview (Masonry Layout with Natural Image Ratios) ===== */
+.gallery-preview {
+    background-color: var(--bg-color);
 }
 
-.gallery-item {
-    position: relative;
-    overflow: hidden;
+.gallery-preview .gallery-grid { /* Made specific to gallery-preview */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    align-items: start; /* Add this to prevent items from stretching */
+    /* Note: Styles for .gallery-item within .gallery-preview might need to be distinct
+       if they differ significantly from the main gallery page's .gallery-item.
+       For now, assuming .gallery-item styles are general enough or will be overridden. */
+}
+
+.gallery-preview .gallery-item img { /* Made specific to gallery-preview */
+    width: 100%;
+    height: auto; /* important */
+    object-fit: contain; /* Changed from cover to contain */
+    display: block;
     border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
     transition: transform var(--transition-normal);
 }
 
@@ -359,13 +374,14 @@ nav {
 
 .gallery-item img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius-sm);
     transition: transform var(--transition-normal);
 }
 
 .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .gallery-link {
@@ -373,9 +389,31 @@ nav {
     margin-top: var(--spacing-md);
 }
 
+/* Responsive columns for gallery-preview */
+@media (max-width: 1024px) {
+    .gallery-preview .gallery-grid { /* Made specific to gallery-preview */
+        /* If this preview is also meant to be masonry at this size, keep column-count.
+           Otherwise, adjust grid-template-columns or remove if it should remain grid.
+           Assuming it might switch to a simpler column layout for preview: */
+        display: grid; /* Re-assert grid if it was column-count before, or adjust columns */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Example adjustment */
+        /* OR if it was meant to be column-count for preview too:
+        column-count: 2; */
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-preview .gallery-grid { /* Made specific to gallery-preview */
+        display: grid; /* Re-assert grid or adjust columns */
+        grid-template-columns: 1fr; /* Example: single column for preview on small screens */
+        /* OR if it was meant to be column-count for preview too:
+        column-count: 1; */
+    }
+}
+
 /* ===== Social Section ===== */
 .social {
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     text-align: center;
 }
 
@@ -499,14 +537,101 @@ footer {
 }
 
 /* ===== Gallery Page ===== */
+
+/* Styles moved from gallery.html */
+.event-section {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.event-section:last-child {
+    border-bottom: none;
+}
+
+.event-header { /* Styles for the header within each event section in gallery.html */
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.event-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.event-header h2 {
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    transition: color 0.3s ease;
+    color: var(--accent-color);
+}
+
+.event-section:hover .event-header h2 {
+    color: var(--accent-color); /* Maintain accent color on hover */
+}
+
+.event-header .event-date { /* Specific to event header in gallery.html */
+    color: var(--gray-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: none; /* Changed from flex to none to hide the element */
+    align-items: center;
+}
+
+.event-header .event-date i {
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+}
+
+.event-header .event-description { /* Specific to event header in gallery.html */
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* Loading animation (if not already globally defined) */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.loading-shimmer {
+    background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+/* Event count badge for gallery.html sections */
+.event-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+/* End of styles moved from gallery.html */
+
 .gallery-filters {
     margin-bottom: var(--spacing-md);
     position: sticky;
     top: 70px;
     z-index: 100;
-    background-color: var(--light-color);
+    background-color: var(--card-bg);
     padding: 15px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius-md);
 }
 
@@ -521,20 +646,20 @@ footer {
 
 .filter-btn {
     padding: 0.6rem 1.5rem;
-    background-color: white;
+    background-color: var(--card-bg);
     border: none;
     border-radius: 30px;
-    color: var(--secondary-color);
+    color: var(--text-color);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .filter-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #2a2a2a;
 }
 
 .filter-btn.active {
@@ -567,7 +692,7 @@ footer {
     left: 0;
     width: 80px;
     height: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     transition: width 0.3s ease;
 }
 
@@ -575,20 +700,27 @@ footer {
     width: 100%;
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+/* Updated for Masonry Layout - now specifically targeting gallery page */
+.gallery-section .gallery-grid {
+    column-count: 4; /* Default for large screens */
+    column-gap: 20px; /* Or var(--spacing-sm) */
     margin-bottom: var(--spacing-md);
+    display: block; 
 }
 
 .gallery-item {
+    display: inline-block; /* Changed from block */
+    width: 100%; /* Ensure items take full width of their column */
+    vertical-align: top; /* Added for inline-block items */
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Restored */
     border-radius: var(--border-radius-md);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    background-color: white;
+    background-color: var(--card-bg);
+    break-inside: avoid; /* Crucial for masonry items */
+    margin-bottom: 20px; /* Simulates row gap in masonry */
+    /* width: 100%; is already set above */
 }
 
 .gallery-item:hover {
@@ -598,15 +730,17 @@ footer {
 
 .gallery-item .image-container {
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Restored */
     border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
-    height: 280px;
+    line-height: 0; /* Added to prevent baseline gaps */
+    /* Ensure no explicit height or min-height here */
 }
 
 .gallery-item .image-container img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; /* Crucial for masonry: image height dictates item height */
+    display: block; /* Good practice for images in masonry */
+    vertical-align: top; /* Added for alignment */
     transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -682,6 +816,25 @@ footer {
     margin-right: 5px;
 }
 
+/* Responsive Masonry Gallery Grid for Gallery Page */
+@media (max-width: 1200px) {
+    .gallery-section .gallery-grid { /* Targeting gallery page specific grid */
+        column-count: 3;
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery-section .gallery-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-section .gallery-grid {
+        column-count: 1;
+    }
+}
+
 /* Back to top button */
 .back-to-top {
     position: fixed;
@@ -732,7 +885,7 @@ footer {
 
 /* ===== Events Page ===== */
 .cruz-fest-feature {
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     padding: var(--spacing-xl) 0;
 }
 
@@ -744,7 +897,7 @@ footer {
 }
 
 .cruz-fest-info h2 {
-    color: var(--secondary-color);
+    color: var(--text-color);
     margin-bottom: var(--spacing-xs);
 }
 
@@ -817,7 +970,7 @@ footer {
 }
 
 .event-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: var(--border-radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
@@ -894,7 +1047,7 @@ footer {
 }
 
 .past-event {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: var(--border-radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
@@ -987,7 +1140,7 @@ footer {
 
 /* ===== Features Page Styles ===== */
 .features-intro {
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     padding: var(--spacing-md) 0;
     text-align: center;
 }
@@ -1010,7 +1163,7 @@ footer {
 }
 
 .feature-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: var(--border-radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-md);
@@ -1164,7 +1317,7 @@ footer {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: white;
+        background-color: var(--bg-color);
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -1192,9 +1345,7 @@ footer {
         font-size: 1.1rem;
     }
     
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
+    /* Removed conflicting .gallery-grid rule */
     
     .footer-content {
         grid-template-columns: 1fr;
@@ -1234,9 +1385,7 @@ footer {
         font-size: 0.9rem;
     }
     
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
+    /* Removed conflicting .gallery-grid rule */
     
     .events-grid,
     .past-events-grid {
