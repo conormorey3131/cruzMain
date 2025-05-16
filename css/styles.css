@@ -339,9 +339,22 @@ nav {
     color: var(--primary-color);
 }
 
-.fest-image img {
+.fest-image { /* Container for the Cruz Fest image */
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-md);
+    overflow: hidden; /* Important for object-fit to work cleanly */
+    height: 300px; /* Define a height for the container */
+    /* Alternatively, consider aspect-ratio if supported and desired */
+    /* aspect-ratio: 16 / 9; */
+}
+
+.fest-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will make the image cover the area, cropping if necessary */
+    display: block; /* Already global, but good to be explicit */
+    border-radius: 0; /* Remove border-radius from image if container has it */
+    /* box-shadow is on the container now */
 }
 
 /* ===== Gallery Preview (Masonry Layout with Natural Image Ratios) ===== */
@@ -520,7 +533,7 @@ footer {
 /* ===== Page Banner ===== */
 .page-banner {
     height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/e46.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../banner_events.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -1404,4 +1417,130 @@ footer {
     .form-group .btn {
         border-radius: var(--border-radius-sm);
     }
+}
+
+/* Styles for the new community subscription form */
+#communitySubscribeForm {
+    margin-top: 20px; /* Adds some space above the form */
+    display: flex; /* Aligns input and button in a row */
+    align-items: center; /* Vertically aligns items in the flex container */
+    gap: 10px; /* Adds space between the input and the button */
+}
+
+.subscribe-input {
+    padding: 10px; /* Adjust to match your .btn padding if desired */
+    flex-grow: 1; /* Allows the input field to take up available space */
+    border-radius: var(--border-radius-sm, 4px); /* Rounded corners, using variable with fallback */
+    border: 1px solid #ccc; /* Standard border */
+    font-size: 1em; /* Match surrounding text size */
+    color: #333; /* Dark text color for readability */
+    background-color: var(--light-color); /* Light background for the input */
+}
+
+/* Ensure .btn styles apply well to a <button> element */
+#communitySubscribeForm .btn {
+    /* Assuming .btn styles are sufficient, but can add overrides if needed */
+    white-space: nowrap; /* Prevents button text from wrapping */
+}
+
+/* ===== Other Notable Events Section on Events Page ===== */
+.other-events {
+    padding: var(--spacing-lg) 0; 
+}
+
+.other-events .container h2 {
+    text-align: center; 
+    margin-bottom: var(--spacing-lg); 
+}
+
+/* .other-events-grid can inherit from .events-grid or have specific styles */
+/* .events-grid is already defined as:
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md); 
+*/
+
+.event-card-other {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    position: relative; /* For positioning the date badge */
+    display: flex;
+    flex-direction: column;
+    min-height: 250px; /* Ensure a minimum height for consistency */
+}
+
+.event-card-other:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.event-card-other-date-badge {
+    position: absolute;
+    top: 15px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
+    background-color: var(--accent-color); /* Using accent color for variety */
+    color: white;
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    font-size: 0.9rem; 
+    box-shadow: var(--shadow-sm);
+}
+
+.event-card-other-date-badge span { /* For the month part */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    display: block;
+}
+
+.event-card-other h3 {
+    font-size: 1.4rem; /* Slightly smaller than main event cards */
+    color: var(--primary-color); 
+    margin-bottom: var(--spacing-sm);
+    margin-top: 0; /* Reset top margin as badge is absolute */
+    padding-right: 70px; /* Ensure text doesn't overlap with badge */
+}
+
+.event-card-other-details {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+}
+
+.event-card-other-details i.fas { /* Be specific for font awesome icons */
+    margin-right: var(--spacing-sm);
+    color: var(--primary-color); /* Use primary color for icons in details */
+    width: 16px; 
+    text-align: center;
+}
+
+.event-card-other-description {
+    font-size: 0.85rem;
+    color: var(--gray-color);
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1; 
+}
+
+.event-card-other .btn {
+    margin-top: auto; 
+    align-self: flex-start; 
+    background-color: var(--secondary-color); /* Different button color for distinction */
+    border-color: var(--secondary-color);
+}
+.event-card-other .btn:hover {
+    background-color: transparent;
+    color: var(--secondary-color);
 }

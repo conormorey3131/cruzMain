@@ -36,7 +36,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Cruz Ireland</h1>
-            <p>Ireland's Premier Car Meet Community</p>
+            <p>Ireland's Premier Car Community</p>
             <a href="events.html" class="btn">Upcoming Events</a>
         </div>
     </section>
@@ -46,12 +46,15 @@
             <h2>About Cruz Ireland</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Cruz Ireland is a community of car enthusiasts dedicated to organizing and promoting car meets across Ireland. From Cork to Dingle, Mondello to Dublin, we bring together passionate car owners and admirers to celebrate automotive culture.</p>
-                    <p>Our events showcase a diverse range of vehicles, from JDM classics to European performance cars, creating an inclusive environment for all automotive enthusiasts.</p>
-                    <a href="#" class="btn">Join Our Community</a>
+                    <p>Cruz Ireland is a community of car enthusiasts dedicated to organizing and promoting car meets across Ireland. From Cork to Dingle, Mondello to Watergrassgill, we bring together passionate car owners and admirers to celebrate automotive culture.</p>
+                    <p>Our events specialize in showcasing the finest modified cars across Ireland and beyond. From iconic Japanese cars to High performance European cars, and everytbing in between, Cruz event always showcase the coolest cars to be found across the Emerald Isle.</p>
+                    <form id="communitySubscribeForm">
+                        <input type="email" id="communityEmail" class="subscribe-input" placeholder="Your email address" required>
+                        <button type="submit" class="btn">Sign Up</button>
+                    </form>
                 </div>
                 <div class="about-image">
-                    <img src="images/e36.jpg" alt="Car Meet in Ireland">
+                    <img src="dingleJzx.jpg" alt="Car Meet in Ireland">
                 </div>
             </div>
         </div>
@@ -62,7 +65,7 @@
             <h2>Cruz Fest 2025</h2>
             <div class="fest-content">
                 <div class="fest-image">
-                    <img src="images/mondello_cam.jpg" alt="Cruz Fest">
+                    <img src="cruzFest.jpg" alt="Cruz Fest">
                 </div>
                 <div class="fest-text">
                     <h3>Ireland's Biggest Car Meet</h3>
@@ -83,7 +86,7 @@
             <h2>Featured Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/r34.jpg" alt="Nissan Skyline R34">
+                    <img src="images\Cruz September 2023 meet\DSC02695.jpg" alt="Nissan Skyline R34">
                 </div>
                 <div class="gallery-item">
                     <img src="images/s15.jpg" alt="Nissan Silvia S15">
@@ -149,7 +152,7 @@
                 </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p>Email: cruzireland1@gmail.com</p>
+                    <p>Email: <a href="mailto:cruzireland1@gmail.com">cruzireland1@gmail.com</a></p>
                 </div>
             </div>
             <div class="copyright">
@@ -158,6 +161,50 @@
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script>
+      // Your Firebase config (as you provided)
+      const firebaseConfig = {
+        apiKey: "AIzaSyCvbd9rlcWdb7h9cdbUCqBu78Z2JFRyvfc",
+        authDomain: "cruz-6d1a8.firebaseapp.com",
+        databaseURL: "https://cruz-6d1a8-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "cruz-6d1a8",
+        storageBucket: "cruz-6d1a8.firebasestorage.app",
+        messagingSenderId: "962412863879",
+        appId: "1:962412863879:web:09fb7d1c24b94bc7c03322"
+      };
+
+      // Initialize Firebase (checking if already initialized to prevent errors)
+      if (!firebase.apps.length) {
+          firebase.initializeApp(firebaseConfig);
+      }
+      const database = firebase.database();
+
+      const communityForm = document.getElementById('communitySubscribeForm');
+      if (communityForm) {
+          communityForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            const emailInput = document.getElementById('communityEmail');
+            const email = emailInput.value;
+
+            // Push to Firebase Realtime Database (using 'communitySubmissions' path)
+            database.ref('communitySubmissions').push({
+              email: email,
+              timestamp: Date.now()
+            }).then(() => {
+              communityForm.reset(); // Clear the form
+              window.location.href = 'thanks.html'; // Redirect to thank you page
+            }).catch((error) => {
+              console.error("Error saving data to Firebase:", error);
+              alert("An error occurred while signing up. Please try again.");
+            });
+          });
+      } else {
+          console.warn("Subscription form with ID 'communitySubscribeForm' not found on the page.");
+      }
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>

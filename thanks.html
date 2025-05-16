@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Cruz Ireland</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            /* Using a background image from the project */
+            background: url('images/cork_night.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        /* Custom style for better text visibility on a potentially dark/busy background */
+        .content-bg {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+            padding: 2rem;
+            border-radius: 0.75rem; /* Tailwind's rounded-xl is 0.75rem */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+    <div class="content-bg text-center text-white w-full max-w-2xl">
+        <h1 class="text-5xl md:text-7xl tracking-wider mb-6">THANK YOU!</h1>
+        <p class="text-xl md:text-2xl mb-8">Your email has been submitted successfully.</p>
+        <a href="index.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-10 rounded-full shadow-md transition duration-300 text-lg">
+            Go Back to Home
+        </a>
+    </div>
+    <!-- Assuming thanks.html might not have the standard footer, but if it did, the change would be here.
+         If it does have the standard footer, the SEARCH block would need to find its specific email line.
+         For now, I'm assuming it does NOT have the standard footer with the email, so no change is made to this file regarding the email link.
+         If it DOES have the footer, I'll need to re-read and apply the change.
+    -->
+</body>
+</html>
