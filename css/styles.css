@@ -592,16 +592,18 @@ footer {
 }
 
 .event-header .event-date { /* Specific to event header in gallery.html */
-    color: var(--gray-color);
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    display: none; /* Changed from flex to none to hide the element */
+    color: var(--text-color); 
+    font-size: 0.8rem;      /* Further reduced font size */
+    margin-bottom: 0.8rem;   /* Slightly reduced bottom margin */
+    display: flex; 
     align-items: center;
+    margin-top: 0.2rem;      /* Further reduced top margin */
 }
 
 .event-header .event-date i {
-    margin-right: 0.5rem;
-    color: var(--accent-color);
+    margin-right: 0.3rem;   /* Further reduced spacing */
+    color: var(--primary-color); 
+    font-size: 1em;        /* Icon will also be 0.8rem */
 }
 
 .event-header .event-description { /* Specific to event header in gallery.html */
