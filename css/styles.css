@@ -67,7 +67,13 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
+/* Ensure sections that are meant to be the main content grow - This rule was too generic and is removed. Specific sections will handle their own flex-grow if needed. */
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
@@ -1372,6 +1378,14 @@ footer {
     .footer-social .social-links {
         align-items: center;
     }
+
+    /* Coming Soon Page Responsive Adjustments */
+    .coming-soon-content h1 {
+        font-size: 2.5em; /* Slightly smaller for tablets */
+    }
+    .coming-soon-content p {
+        font-size: 1.1em; /* Slightly smaller for tablets */
+    }
 }
 
 @media (max-width: 576px) {
@@ -1418,6 +1432,17 @@ footer {
     
     .form-group .btn {
         border-radius: var(--border-radius-sm);
+    }
+
+    /* Coming Soon Page Responsive Adjustments for smaller screens */
+    .coming-soon-content h1 {
+        font-size: 2em; /* Smaller for mobile */
+    }
+    .coming-soon-content p {
+        font-size: 1em; /* Smaller for mobile */
+    }
+    .coming-soon-content {
+        padding: var(--spacing-md) var(--spacing-xs); /* Smaller padding for mobile */
     }
 }
 
@@ -1545,4 +1570,31 @@ footer {
 .event-card-other .btn:hover {
     background-color: transparent;
     color: var(--secondary-color);
+}
+
+/* ===== Coming Soon Page Styles ===== */
+.coming-soon-content {
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-sm); /* Use theme spacing */
+    padding-top: calc(70px + var(--spacing-lg)); /* Account for fixed header + original top padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color); /* Ensure it matches the body background */
+    flex-grow: 1; /* Allows this section to grow and fill available space */
+}
+.coming-soon-content h1 {
+    font-size: 3em; /* Default for larger screens */
+    color: var(--text-color); /* Use theme text color */
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
+}
+.coming-soon-content p {
+    font-size: 1.2em; /* Default for larger screens */
+    color: var(--gray-color); /* Use theme gray color */
+    margin-bottom: var(--spacing-lg); /* Use theme spacing */
+}
+/* Ensure the .btn class styles are applied correctly if not already global */
+.coming-soon-content .btn {
+    /* Assuming .btn styles from above are sufficient */
 }
