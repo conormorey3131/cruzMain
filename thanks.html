@@ -5,20 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Cruz Ireland</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+    <link rel="canonical" href="https://cruzireland.ie/thanks.html">
+    <meta name="description" content="Thank you for subscribing to Cruz Ireland. Stay tuned for updates on car meets and events across Ireland.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            /* Using a background image from the project */
-            background: url('images/cork_night.jpg') no-repeat center center fixed;
+        .thanks-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/cork_night.jpg') no-repeat center center;
             background-size: cover;
+            padding: var(--spacing-md);
         }
-        /* Custom style for better text visibility on a potentially dark/busy background */
-        .content-bg {
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
-            padding: 2rem;
-            border-radius: 0.75rem; /* Tailwind's rounded-xl is 0.75rem */
+        .thanks-content {
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+        }
+        .thanks-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: var(--text-color);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: 0.1em;
+        }
+        .thanks-content p {
+            font-size: 1.25rem;
+            color: var(--gray-color);
+            margin-bottom: var(--spacing-lg);
+        }
+        .thanks-content .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-size: 1.1rem;
+        }
+        .thanks-icon {
+            font-size: 4rem;
+            color: var(--success-color);
+            margin-bottom: var(--spacing-md);
         }
     </style>
     <!-- Google tag (gtag.js) -->
@@ -27,22 +57,21 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-0B5MEHN1D7');
     </script>
 </head>
-<body class="min-h-screen flex items-center justify-center px-4">
-    <div class="content-bg text-center text-white w-full max-w-2xl">
-        <h1 class="text-5xl md:text-7xl tracking-wider mb-6">THANK YOU!</h1>
-        <p class="text-xl md:text-2xl mb-8">Your email has been submitted successfully.</p>
-        <a href="index.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-10 rounded-full shadow-md transition duration-300 text-lg">
-            Go Back to Home
-        </a>
-    </div>
-    <!-- Assuming thanks.html might not have the standard footer, but if it did, the change would be here.
-         If it does have the standard footer, the SEARCH block would need to find its specific email line.
-         For now, I'm assuming it does NOT have the standard footer with the email, so no change is made to this file regarding the email link.
-         If it DOES have the footer, I'll need to re-read and apply the change.
-    -->
+<body>
+    <main class="thanks-page">
+        <div class="thanks-content">
+            <div class="thanks-icon">
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
+            </div>
+            <h1>Thank You!</h1>
+            <p>Your email has been submitted successfully. We'll keep you updated on upcoming Cruz Ireland events.</p>
+            <a href="index.html" class="btn">
+                <i class="fas fa-home" aria-hidden="true"></i> Back to Home
+            </a>
+        </div>
+    </main>
 </body>
 </html>

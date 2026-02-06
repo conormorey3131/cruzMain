@@ -1,0 +1,11 @@
+# Robots.txt for Cruz Ireland
+# https://cruzireland.ie
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://cruzireland.ie/sitemap.xml
+
+# Disallow admin/private areas (if any)
+Disallow: /js/firebase-config.js

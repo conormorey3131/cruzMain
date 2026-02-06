@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cruz Ireland - Car Meets & Events</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="canonical" href="https://cruzireland.ie/">
+
+    <!-- Primary Meta Tags -->
     <meta name="description" content="Cruz Ireland - The premier car meet community in Ireland. Join us for events across the country including Cork, Dingle, and Mondello.">
+    <meta name="keywords" content="car meets Ireland, Cruz Ireland, car events, JDM Ireland, car community, Cork car meet, Dingle cruise, modified cars Ireland">
+    <meta name="author" content="Cruz Ireland">
+    <meta name="theme-color" content="#1a1a2e">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cruzireland.ie/">
+    <meta property="og:title" content="Cruz Ireland - Car Meets & Events">
+    <meta property="og:description" content="Ireland's premier car meet community. Join us for events featuring the best modified cars across Cork, Dingle, Kerry and more.">
+    <meta property="og:image" content="https://cruzireland.ie/images/s15.jpg">
+    <meta property="og:locale" content="en_IE">
+    <meta property="og:site_name" content="Cruz Ireland">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://cruzireland.ie/">
+    <meta name="twitter:title" content="Cruz Ireland - Car Meets & Events">
+    <meta name="twitter:description" content="Ireland's premier car meet community. Join us for events featuring the best modified cars across Cork, Dingle, Kerry and more.">
+    <meta name="twitter:image" content="https://cruzireland.ie/images/s15.jpg">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0B5MEHN1D7"></script>
     <script>
@@ -17,8 +41,31 @@
 
       gtag('config', 'G-0B5MEHN1D7');
     </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Cruz Ireland",
+        "url": "https://cruzireland.ie",
+        "logo": "https://cruzireland.ie/IMG_9075.PNG",
+        "description": "Ireland's premier car meet community, organizing automotive events across Cork, Dingle, Kerry and more.",
+        "sameAs": [
+            "https://www.instagram.com/cruz.irl/",
+            "https://www.tiktok.com/@cruzireland1",
+            "https://www.facebook.com/events/1981486229046977"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "cruzireland1@gmail.com",
+            "contactType": "customer service"
+        }
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="container">
             <div class="logo">
@@ -33,20 +80,44 @@
                     <li><a href="coming-soon.html">Features</a></li>
                     <li><a href="events.html">Events</a></li>
                 </ul>
-                <div class="hamburger">
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </nav>
         </div>
     </header>
 
+    <main id="main-content">
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Cruz Ireland</h1>
             <p>Ireland's Premier Car Community</p>
             <a href="events.html" class="btn">Upcoming Events</a>
+        </div>
+    </section>
+
+    <section class="upcoming-event">
+        <div class="container">
+            <h2>Upcoming Event</h2>
+            <div class="event-card-featured">
+                <div class="event-card-featured-date">
+                    <span class="day">22</span>
+                    <span class="month">Mar</span>
+                    <span class="year">2026</span>
+                </div>
+                <div class="event-card-featured-content">
+                    <h3>Cruz Drift Day</h3>
+                    <p class="event-card-featured-details"><i class="fas fa-calendar-alt"></i> March 22, 2026</p>
+                    <p class="event-card-featured-details"><i class="fas fa-map-marker-alt"></i> Kartworld, Watergrasshill, T56TK73</p>
+                    <p class="event-card-featured-description">Join us for an exciting drift day at Kartworld! Whether you're a driver looking to hit the track or a car enthusiast wanting to showcase your build, this is the event for you.</p>
+                    <div class="event-card-featured-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScJvMJwh0yOEe1vzeMw5rYixEyuTDChYwXrAxEZ8b4v0cLr_A/viewform?usp=header" class="btn btn-sm" target="_blank" rel="noopener noreferrer"><i class="fas fa-car"></i> Driver Application</a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiZLcm4qHbcsPHL9Z0t5umzDL2sHp2ywdMiWVeCEUskT4rFg/viewform?usp=header" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-trophy"></i> Car Show Application</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -57,34 +128,14 @@
                 <div class="about-text">
                     <p>Cruz Ireland is a community of car enthusiasts dedicated to organizing and promoting car meets across Ireland. From Cork to Dingle, Mondello to Watergrasshill, we bring together passionate car owners and admirers to celebrate automotive culture.</p>
                     <p>Our events specialize in showcasing the finest modified cars across Ireland and beyond. From iconic Japanese cars to High performance European cars, and everything in between, Cruz events always showcase the coolest cars to be found across the Emerald Isle.</p>
-                    <form id="communitySubscribeForm">
-                        <input type="email" id="communityEmail" class="subscribe-input" placeholder="Your email address" required>
-                        <button type="submit" class="btn">Sign Up</button>
+                    <form id="communitySubscribeForm" aria-label="Newsletter signup">
+                        <label for="communityEmail" class="visually-hidden">Email address</label>
+                        <input type="email" id="communityEmail" name="email" class="subscribe-input" placeholder="Your email address" required aria-required="true" autocomplete="email">
+                        <button type="submit" class="btn" aria-label="Sign up for newsletter">Sign Up</button>
                     </form>
                 </div>
                 <div class="about-image">
                     <img src="dingleJzx.jpg" alt="Car Meet in Ireland">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cruz-fest">
-        <div class="container">
-            <h2>Cruz Fest 2025</h2>
-            <div class="fest-content">
-                <div class="fest-image">
-                    <img src="cruzFest.jpg" alt="Cruz Fest">
-                </div>
-                <div class="fest-text">
-                    <h3>Ireland's Biggest Car Meet</h3>
-                    <p>Join us for Cruz Fest, the largest gathering of car enthusiasts in Ireland. Experience amazing vehicles, meet fellow enthusiasts, and enjoy a day filled with automotive passion.</p>
-                    <ul class="fest-details">
-                        <li><i class="fas fa-calendar"></i> 6th July 2025</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Kartworld Adventure Center</li>
-                        <li><i class="fas fa-ticket-alt"></i> <a href="https://www.eventbrite.ie/e/cruzfest-2025-tickets-1217865250749?utm_experiment=test_share_listing&aff=ebdsshios" class="btn-outline">Buy Now</a></li>
-                    </ul>
-                    <a href="events.html" class="btn" target="_blank">Learn More</a>
                 </div>
             </div>
         </div>
@@ -95,7 +146,7 @@
             <h2>Featured Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images\Cruz September 2023 meet\DSC02695.jpg" alt="Nissan Skyline R34">
+                    <img src="images/Cruz September 2023 meet/DSC02695.jpg" alt="Nissan Skyline R34">
                 </div>
                 <div class="gallery-item">
                     <img src="images/s15.jpg" alt="Nissan Silvia S15">
@@ -117,18 +168,19 @@
         <div class="container">
             <h2>Follow Us</h2>
             <div class="social-links">
-                <a href="https://www.instagram.com/cruz.irl/" target="_blank" class="social-icon">
-                    <i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/cruz.irl/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow us on Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.tiktok.com/@cruzireland1" target="_blank" class="social-icon">
-                    <i class="fab fa-tiktok"></i>
+                <a href="https://www.tiktok.com/@cruzireland1" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow us on TikTok">
+                    <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.facebook.com/events/1981486229046977" target="_blank" class="social-icon">
-                    <i class="fab fa-facebook"></i>
+                <a href="https://www.facebook.com/events/1981486229046977" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow us on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
     </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -148,14 +200,14 @@
                 <div class="footer-social">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/cruz.irl/" target="_blank">
-                            <i class="fab fa-instagram"></i> Instagram
+                        <a href="https://www.instagram.com/cruz.irl/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
                         </a>
-                        <a href="https://www.tiktok.com/@cruzireland1" target="_blank">
-                            <i class="fab fa-tiktok"></i> TikTok
+                        <a href="https://www.tiktok.com/@cruzireland1" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-tiktok" aria-hidden="true"></i> TikTok
                         </a>
-                        <a href="https://www.facebook.com/events/1981486229046977" target="_blank">
-                            <i class="fab fa-facebook"></i> Facebook
+                        <a href="https://www.facebook.com/events/1981486229046977" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook" aria-hidden="true"></i> Facebook
                         </a>
                     </div>
                 </div>
@@ -172,46 +224,40 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="js/firebase-config.js"></script>
     <script>
-      // Your Firebase config (as you provided)
-      const firebaseConfig = {
-        apiKey: "AIzaSyCvbd9rlcWdb7h9cdbUCqBu78Z2JFRyvfc",
-        authDomain: "cruz-6d1a8.firebaseapp.com",
-        databaseURL: "https://cruz-6d1a8-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "cruz-6d1a8",
-        storageBucket: "cruz-6d1a8.firebasestorage.app",
-        messagingSenderId: "962412863879",
-        appId: "1:962412863879:web:09fb7d1c24b94bc7c03322"
-      };
-
-      // Initialize Firebase (checking if already initialized to prevent errors)
-      if (!firebase.apps.length) {
-          firebase.initializeApp(firebaseConfig);
-      }
-      const database = firebase.database();
-
       const communityForm = document.getElementById('communitySubscribeForm');
       if (communityForm) {
           communityForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault();
 
             const emailInput = document.getElementById('communityEmail');
-            const email = emailInput.value;
+            const email = emailInput.value.trim();
+            const submitBtn = communityForm.querySelector('button[type="submit"]');
 
-            // Push to Firebase Realtime Database (using 'communitySubmissions' path)
+            // Basic email validation
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+              alert("Please enter a valid email address.");
+              return;
+            }
+
+            // Disable button during submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing up...';
+
             database.ref('communitySubmissions').push({
               email: email,
               timestamp: Date.now()
             }).then(() => {
-              communityForm.reset(); // Clear the form
-              window.location.href = 'thanks.html'; // Redirect to thank you page
+              communityForm.reset();
+              window.location.href = 'thanks.html';
             }).catch((error) => {
               console.error("Error saving data to Firebase:", error);
               alert("An error occurred while signing up. Please try again.");
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Sign Up';
             });
           });
-      } else {
-          console.warn("Subscription form with ID 'communitySubscribeForm' not found on the page.");
       }
     </script>
     <script src="js/script.js"></script>
