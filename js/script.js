@@ -3,6 +3,18 @@
  * Enhanced with modern gallery features and performance optimizations
  */
 
+// Throttle function to limit how often a function can fire
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
@@ -91,14 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Add specific handling for the download button
-            if (downloadBtn) {
-                downloadBtn.addEventListener('click', function(e) {
-                    // Allow default behavior for download
-                    // The download attribute will handle the file download
-                    console.log('Download button clicked');
-                });
-            }
+            // Download button uses default behavior via download attribute
         });
     }
     
@@ -161,39 +166,47 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Enhanced Lazy Loading for Images with fade-in effect
     const lazyLoadImages = () => {
-        if ('loading' in HTMLImageElement.prototype) {
-            // Browser supports native lazy loading
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            lazyImages.forEach(img => {
-                img.classList.add('lazy-load-fade');
-                img.src = img.dataset.src;
-                img.addEventListener('load', () => {
-                    img.classList.add('loaded');
-                });
-            });
-        } else {
-            // Fallback for browsers that don't support lazy loading
+        // For images with data-src, use intersection observer for true lazy loading
+        const lazyImages = document.querySelectorAll('img[data-src]');
+
+        if (lazyImages.length > 0) {
             const lazyImageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const lazyImage = entry.target;
                         lazyImage.classList.add('lazy-load-fade');
                         lazyImage.src = lazyImage.dataset.src;
+                        lazyImage.removeAttribute('data-src');
                         lazyImage.addEventListener('load', () => {
                             lazyImage.classList.add('loaded');
                         });
                         lazyImageObserver.unobserve(lazyImage);
                     }
                 });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
             });
-            
-            const lazyImages = document.querySelectorAll('img[data-src]');
+
             lazyImages.forEach(img => {
                 lazyImageObserver.observe(img);
             });
         }
+
+        // For images with loading="lazy" that already have src, just add fade effect
+        const nativeLazyImages = document.querySelectorAll('img[loading="lazy"]:not([data-src])');
+        nativeLazyImages.forEach(img => {
+            if (img.complete) {
+                img.classList.add('lazy-load-fade', 'loaded');
+            } else {
+                img.classList.add('lazy-load-fade');
+                img.addEventListener('load', () => {
+                    img.classList.add('loaded');
+                });
+            }
+        });
     };
-    
+
     // Initialize lazy loading
     lazyLoadImages();
     
@@ -213,35 +226,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Run animation check on load and scroll
     window.addEventListener('load', animateOnScroll);
-    window.addEventListener('scroll', animateOnScroll);
-    
+    window.addEventListener('scroll', throttle(animateOnScroll, 100));
+
     // Add class to header on scroll
     const header = document.querySelector('header');
-    
-    if (header) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    }
-    
+
     // Back to top button
     const backToTopButton = document.createElement('div');
     backToTopButton.className = 'back-to-top';
     backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
     document.body.appendChild(backToTopButton);
-    
-    // Show/hide back to top button based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
+
+    // Combined scroll handler for header and back-to-top button (throttled)
+    const handleScroll = throttle(function() {
+        const scrollY = window.scrollY;
+
+        // Header scroll effect
+        if (header) {
+            if (scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Back to top button visibility
+        if (scrollY > 300) {
             backToTopButton.classList.add('visible');
         } else {
             backToTopButton.classList.remove('visible');
         }
-    });
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll);
     
     // Scroll to top when button is clicked
     backToTopButton.addEventListener('click', function() {
@@ -315,73 +332,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-// Add CSS for lightbox
-document.head.insertAdjacentHTML('beforeend', `
-<style>
-.lazy-load-fade {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.lazy-load-fade.loaded {
-    opacity: 1;
-}
-
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.lightbox.active {
-    opacity: 1;
-}
-
-.lightbox-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    margin: auto;
-}
-
-.lightbox-image {
-    max-width: 100%;
-    max-height: 80vh;
-    display: block;
-    border-radius: 4px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.close-lightbox {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-lightbox:hover {
-    color: #e63946;
-}
-
-.lightbox-caption {
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 1.1rem;
-}
-</style>
-`);

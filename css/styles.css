@@ -44,10 +44,45 @@ Cruz Ireland Website Styles
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+    /* Layout */
+    --header-height: 70px;
+    --logo-height: 50px;
+    --logo-height-footer: 60px;
+    --gallery-gap: 20px;
 }
 
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* Accessibility - Visually Hidden (for screen readers) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 10000;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+}
 
 /* Reset and Base Styles */
 * {
@@ -72,9 +107,6 @@ body {
     min-height: 100vh;
 }
 
-/* Ensure sections that are meant to be the main content grow - This rule was too generic and is removed. Specific sections will handle their own flex-grow if needed. */
-
-
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
     font-weight: 700;
@@ -84,11 +116,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     position: relative;
     margin-bottom: var(--spacing-md);
 }
@@ -104,7 +136,7 @@ h2::after {
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
 p {
@@ -178,6 +210,12 @@ section {
     font-size: 0.875rem;
 }
 
+.btn.disabled {
+    opacity: 0.6;
+    cursor: default;
+    pointer-events: none;
+}
+
 /* ===== Header & Navigation ===== */
 header {
     background-color: var(--bg-color);
@@ -202,7 +240,7 @@ header .container {
 }
 
 .logo img {
-    height: 50px;
+    height: var(--logo-height);
     width: auto;
 }
 
@@ -242,6 +280,19 @@ nav {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    /* Button reset for accessibility (now using <button> instead of <div>) */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.hamburger:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 .hamburger span {
@@ -265,7 +316,7 @@ nav {
     justify-content: center;
     text-align: center;
     color: white;
-    margin-top: 70px;
+    margin-top: var(--header-height);
 }
 
 .hero-content {
@@ -274,13 +325,13 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     margin-bottom: var(--spacing-sm);
     color: white;
 }
 
 .hero p {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     margin-bottom: var(--spacing-md);
 }
 
@@ -305,62 +356,20 @@ nav {
     box-shadow: var(--shadow-md);
 }
 
-/* ===== Cruz Fest Section ===== */
-.cruz-fest {
-    background-color: #2F4F4F;
-    color: white;
+/* ===== Upcoming Event Section (Homepage) ===== */
+.upcoming-event {
+    background-color: var(--card-bg);
+    padding: var(--spacing-xl) 0;
 }
 
-.cruz-fest h2 {
-    color: white;
+.upcoming-event h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
 }
 
-.cruz-fest h2::after {
-    background-color: var(--primary-color);
-}
-
-.fest-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg);
-    align-items: center;
-}
-
-.fest-text h3 {
-    color: white;
-}
-
-.fest-details {
-    margin: var(--spacing-md) 0;
-}
-
-.fest-details li {
-    margin-bottom: var(--spacing-sm);
-    display: flex;
-    align-items: center;
-}
-
-.fest-details i {
-    margin-right: var(--spacing-sm);
-    color: var(--primary-color);
-}
-
-.fest-image { /* Container for the Cruz Fest image */
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
-    overflow: hidden; /* Important for object-fit to work cleanly */
-    height: 300px; /* Define a height for the container */
-    /* Alternatively, consider aspect-ratio if supported and desired */
-    /* aspect-ratio: 16 / 9; */
-}
-
-.fest-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* This will make the image cover the area, cropping if necessary */
-    display: block; /* Already global, but good to be explicit */
-    border-radius: 0; /* Remove border-radius from image if container has it */
-    /* box-shadow is on the container now */
+.upcoming-event .event-card-featured {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 /* ===== Gallery Preview (Masonry Layout with Natural Image Ratios) ===== */
@@ -368,25 +377,22 @@ nav {
     background-color: var(--bg-color);
 }
 
-.gallery-preview .gallery-grid { /* Made specific to gallery-preview */
+.gallery-preview .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    align-items: start; /* Add this to prevent items from stretching */
-    /* Note: Styles for .gallery-item within .gallery-preview might need to be distinct
-       if they differ significantly from the main gallery page's .gallery-item.
-       For now, assuming .gallery-item styles are general enough or will be overridden. */
+    align-items: start;
 }
 
-.gallery-preview .gallery-item img { /* Made specific to gallery-preview */
+.gallery-preview .gallery-item img {
     width: 100%;
-    height: auto; /* important */
-    object-fit: contain; /* Changed from cover to contain */
+    height: auto;
+    object-fit: contain;
     display: block;
     border-radius: var(--border-radius-sm);
     transition: transform var(--transition-normal);
 }
 
-.gallery-item:hover {
+.gallery-preview .gallery-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
 }
@@ -408,25 +414,16 @@ nav {
     margin-top: var(--spacing-md);
 }
 
-/* Responsive columns for gallery-preview */
+/* Responsive gallery-preview */
 @media (max-width: 1024px) {
-    .gallery-preview .gallery-grid { /* Made specific to gallery-preview */
-        /* If this preview is also meant to be masonry at this size, keep column-count.
-           Otherwise, adjust grid-template-columns or remove if it should remain grid.
-           Assuming it might switch to a simpler column layout for preview: */
-        display: grid; /* Re-assert grid if it was column-count before, or adjust columns */
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Example adjustment */
-        /* OR if it was meant to be column-count for preview too:
-        column-count: 2; */
+    .gallery-preview .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 }
 
 @media (max-width: 600px) {
-    .gallery-preview .gallery-grid { /* Made specific to gallery-preview */
-        display: grid; /* Re-assert grid or adjust columns */
-        grid-template-columns: 1fr; /* Example: single column for preview on small screens */
-        /* OR if it was meant to be column-count for preview too:
-        column-count: 1; */
+    .gallery-preview .gallery-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -477,7 +474,7 @@ footer {
 }
 
 .footer-logo img {
-    height: 60px;
+    height: var(--logo-height-footer);
     width: auto;
     margin-bottom: var(--spacing-sm);
 }
@@ -547,7 +544,7 @@ footer {
     justify-content: center;
     text-align: center;
     color: white;
-    margin-top: 70px;
+    margin-top: var(--header-height);
 }
 
 .banner-content h1 {
@@ -557,10 +554,9 @@ footer {
 
 /* ===== Gallery Page ===== */
 
-/* Styles moved from gallery.html */
 .event-section {
-    margin-bottom: 4rem;
-    padding-bottom: 2rem;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
 }
@@ -569,10 +565,10 @@ footer {
     border-bottom: none;
 }
 
-.event-header { /* Styles for the header within each event section in gallery.html */
-    margin-bottom: 2rem;
+.event-header {
+    margin-bottom: var(--spacing-md);
     position: relative;
-    padding-left: 1rem;
+    padding-left: var(--spacing-sm);
 }
 
 .event-header::before {
@@ -597,29 +593,29 @@ footer {
     color: var(--accent-color); /* Maintain accent color on hover */
 }
 
-.event-header .event-date { /* Specific to event header in gallery.html */
-    color: var(--text-color); 
-    font-size: 0.8rem;      /* Further reduced font size */
-    margin-bottom: 0.8rem;   /* Slightly reduced bottom margin */
-    display: flex; 
+.event-header .event-date {
+    color: var(--text-color);
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+    display: flex;
     align-items: center;
-    margin-top: 0.2rem;      /* Further reduced top margin */
+    margin-top: 0.2rem;
 }
 
 .event-header .event-date i {
-    margin-right: 0.3rem;   /* Further reduced spacing */
-    color: var(--primary-color); 
-    font-size: 1em;        /* Icon will also be 0.8rem */
+    margin-right: 0.3rem;
+    color: var(--primary-color);
+    font-size: 1em;
 }
 
-.event-header .event-description { /* Specific to event header in gallery.html */
+.event-header .event-description {
     margin-bottom: 1.5rem;
     max-width: 800px;
     line-height: 1.7;
     font-size: 1.05rem;
 }
 
-/* Loading animation (if not already globally defined) */
+/* Loading animation */
 @keyframes shimmer {
     0% { background-position: -1000px 0; }
     100% { background-position: 1000px 0; }
@@ -631,7 +627,7 @@ footer {
     animation: shimmer 2s infinite linear;
 }
 
-/* Event count badge for gallery.html sections */
+/* Event count badge */
 .event-count {
     position: absolute;
     top: 0;
@@ -643,7 +639,6 @@ footer {
     font-size: 0.9rem;
     font-weight: 600;
 }
-/* End of styles moved from gallery.html */
 
 .gallery-filters {
     margin-bottom: var(--spacing-md);
@@ -720,24 +715,23 @@ footer {
 /* Updated for Masonry Layout - now specifically targeting gallery page */
 .gallery-section .gallery-grid {
     column-count: 4; /* Default for large screens */
-    column-gap: 20px; /* Or var(--spacing-sm) */
+    column-gap: var(--gallery-gap);
     margin-bottom: var(--spacing-md);
-    display: block; 
+    display: block;
 }
 
 .gallery-item {
-    display: inline-block; /* Changed from block */
-    width: 100%; /* Ensure items take full width of their column */
-    vertical-align: top; /* Added for inline-block items */
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
     position: relative;
-    overflow: hidden; /* Restored */
+    overflow: hidden;
     border-radius: var(--border-radius-md);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     background-color: var(--card-bg);
-    break-inside: avoid; /* Crucial for masonry items */
-    margin-bottom: 20px; /* Simulates row gap in masonry */
-    /* width: 100%; is already set above */
+    break-inside: avoid;
+    margin-bottom: var(--gallery-gap);
 }
 
 .gallery-item:hover {
@@ -747,17 +741,16 @@ footer {
 
 .gallery-item .image-container {
     position: relative;
-    overflow: hidden; /* Restored */
+    overflow: hidden;
     border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
-    line-height: 0; /* Added to prevent baseline gaps */
-    /* Ensure no explicit height or min-height here */
+    line-height: 0;
 }
 
 .gallery-item .image-container img {
     width: 100%;
-    height: auto; /* Crucial for masonry: image height dictates item height */
-    display: block; /* Good practice for images in masonry */
-    vertical-align: top; /* Added for alignment */
+    height: auto;
+    display: block;
+    vertical-align: top;
     transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -833,9 +826,9 @@ footer {
     margin-right: 5px;
 }
 
-/* Responsive Masonry Gallery Grid for Gallery Page */
+/* Responsive gallery grid */
 @media (max-width: 1200px) {
-    .gallery-section .gallery-grid { /* Targeting gallery page specific grid */
+    .gallery-section .gallery-grid {
         column-count: 3;
     }
 }
@@ -901,85 +894,6 @@ footer {
 }
 
 /* ===== Events Page ===== */
-.cruz-fest-feature {
-    background-color: var(--bg-color);
-    padding: var(--spacing-xl) 0;
-}
-
-.cruz-fest-content {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: var(--spacing-lg);
-    align-items: center;
-}
-
-.cruz-fest-info h2 {
-    color: var(--text-color);
-    margin-bottom: var(--spacing-xs);
-}
-
-.fest-tagline {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-md);
-}
-
-.fest-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-}
-
-.fest-detail {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-}
-
-.fest-detail i {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-.fest-detail h3 {
-    margin-bottom: 5px;
-    font-size: 1.1rem;
-}
-
-.fest-description {
-    margin-bottom: var(--spacing-md);
-    line-height: 1.8;
-    max-width: 100%;
-    word-wrap: break-word;
-    padding: 0 1rem;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .fest-description {
-      line-height: 1.6;
-      margin-bottom: var(--spacing-sm, 0.75rem);
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .fest-description {
-      line-height: 1.5;
-      font-size: 0.95em;
-      padding: 0 0.75rem;
-    }
-  }
-
-.fest-cta {
-    display: flex;
-    gap: var(--spacing-sm);
-}
-
-.cruz-fest-image img {
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
-}
-
 .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1146,9 +1060,16 @@ footer {
 .form-group input {
     flex-grow: 1;
     padding: 0.75rem;
-    border: none;
+    border: 2px solid transparent;
     border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
     font-family: var(--body-font);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
 }
 
 .form-group .btn {
@@ -1288,52 +1209,29 @@ footer {
 
 /* ===== Responsive Styles ===== */
 @media (max-width: 992px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-    
-    h2 {
-        font-size: 1.8rem;
-    }
-    
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-    
-    .hero p {
-        font-size: 1.3rem;
-    }
-    
     .about-content,
-    .fest-content,
-    .cruz-fest-content,
     .signup-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
-    
+
     .about-text {
         padding-right: 0;
         order: 2;
     }
-    
+
     .about-image {
         order: 1;
-    }
-    
-    .fest-details {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
     }
 }
 
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
-        top: 70px;
+        top: var(--header-height);
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - var(--header-height));
         background-color: var(--bg-color);
         flex-direction: column;
         align-items: center;
@@ -1349,21 +1247,11 @@ footer {
     .hamburger {
         display: flex;
     }
-    
+
     .hero {
         height: 60vh;
     }
-    
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-    }
-    
-    /* Removed conflicting .gallery-grid rule */
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1379,12 +1267,12 @@ footer {
         align-items: center;
     }
 
-    /* Coming Soon Page Responsive Adjustments */
     .coming-soon-content h1 {
-        font-size: 2.5em; /* Slightly smaller for tablets */
+        font-size: 2.5em;
     }
+
     .coming-soon-content p {
-        font-size: 1.1em; /* Slightly smaller for tablets */
+        font-size: 1.1em;
     }
 }
 
@@ -1396,31 +1284,17 @@ footer {
     .hero {
         height: 50vh;
     }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
+
     .btn {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
     }
-    
-    /* Removed conflicting .gallery-grid rule */
-    
+
     .events-grid,
     .past-events-grid {
         grid-template-columns: 1fr;
     }
-    
-    .fest-cta {
-        flex-direction: column;
-    }
-    
+
     .form-group {
         flex-direction: column;
     }
@@ -1434,58 +1308,210 @@ footer {
         border-radius: var(--border-radius-sm);
     }
 
-    /* Coming Soon Page Responsive Adjustments for smaller screens */
     .coming-soon-content h1 {
-        font-size: 2em; /* Smaller for mobile */
+        font-size: 2em;
     }
+
     .coming-soon-content p {
-        font-size: 1em; /* Smaller for mobile */
+        font-size: 1em;
     }
+
     .coming-soon-content {
-        padding: var(--spacing-md) var(--spacing-xs); /* Smaller padding for mobile */
+        padding: var(--spacing-md) var(--spacing-xs);
     }
 }
 
-/* Styles for the new community subscription form */
+/* Community subscription form */
 #communitySubscribeForm {
-    margin-top: 20px; /* Adds some space above the form */
-    display: flex; /* Aligns input and button in a row */
-    align-items: center; /* Vertically aligns items in the flex container */
-    gap: 10px; /* Adds space between the input and the button */
+    margin-top: var(--gallery-gap);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .subscribe-input {
-    padding: 10px; /* Adjust to match your .btn padding if desired */
-    flex-grow: 1; /* Allows the input field to take up available space */
-    border-radius: var(--border-radius-sm, 4px); /* Rounded corners, using variable with fallback */
-    border: 1px solid #ccc; /* Standard border */
-    font-size: 1em; /* Match surrounding text size */
-    color: #333; /* Dark text color for readability */
-    background-color: var(--light-color); /* Light background for the input */
+    padding: 10px;
+    flex-grow: 1;
+    border-radius: var(--border-radius-sm);
+    border: 2px solid transparent;
+    font-size: 1em;
+    color: #333;
+    background-color: var(--light-color);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-/* Ensure .btn styles apply well to a <button> element */
+.subscribe-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+.subscribe-input::placeholder {
+    color: #888;
+}
+
 #communitySubscribeForm .btn {
-    /* Assuming .btn styles are sufficient, but can add overrides if needed */
-    white-space: nowrap; /* Prevents button text from wrapping */
+    white-space: nowrap;
 }
 
-/* ===== Other Notable Events Section on Events Page ===== */
+/* ===== Cruz Events Section ===== */
+.cruz-events {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-color);
+}
+
+.cruz-events h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.cruz-events .events-grid {
+    display: block;
+}
+
+.event-card-featured {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    border-left: 4px solid var(--primary-color);
+}
+
+.event-card-featured:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.event-card-featured-date {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.event-card-featured-date .day {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.event-card-featured-date .month {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.event-card-featured-date .year {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+.event-card-featured-content {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-card-featured-content h3 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.event-card-featured-details {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+}
+
+.event-card-featured-details i {
+    margin-right: var(--spacing-sm);
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+
+.event-card-featured-description {
+    font-size: 1rem;
+    color: var(--gray-color);
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+}
+
+.event-card-featured-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+}
+
+.event-card-featured-buttons .btn,
+.event-card-featured-buttons .btn.btn-sm {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.event-card-featured-buttons .btn i {
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .event-card-featured {
+        grid-template-columns: 1fr;
+    }
+
+    .event-card-featured-date {
+        flex-direction: row;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    .event-card-featured-date .day {
+        font-size: 2.5rem;
+    }
+
+    .event-card-featured-date .month {
+        font-size: 1rem;
+    }
+
+    .event-card-featured-content {
+        padding: var(--spacing-md);
+    }
+
+    .event-card-featured-buttons {
+        flex-direction: column;
+    }
+
+    .event-card-featured-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ===== Other Events Section ===== */
 .other-events {
-    padding: var(--spacing-lg) 0; 
+    padding: var(--spacing-lg) 0;
 }
 
 .other-events .container h2 {
-    text-align: center; 
-    margin-bottom: var(--spacing-lg); 
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
 }
-
-/* .other-events-grid can inherit from .events-grid or have specific styles */
-/* .events-grid is already defined as:
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--spacing-md); 
-*/
 
 .event-card-other {
     background-color: var(--card-bg);
@@ -1493,10 +1519,10 @@ footer {
     padding: var(--spacing-md);
     box-shadow: var(--shadow-sm);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-    position: relative; /* For positioning the date badge */
+    position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 250px; /* Ensure a minimum height for consistency */
+    min-height: 250px;
 }
 
 .event-card-other:hover {
@@ -1506,13 +1532,13 @@ footer {
 
 .event-card-other-date-badge {
     position: absolute;
-    top: 15px; /* Adjust as needed */
-    right: 15px; /* Adjust as needed */
-    background-color: var(--accent-color); /* Using accent color for variety */
+    top: 15px;
+    right: 15px;
+    background-color: var(--accent-color);
     color: white;
-    width: 60px; 
-    height: 60px; 
-    border-radius: 50%; 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1520,22 +1546,22 @@ footer {
     font-weight: 700;
     line-height: 1.1;
     text-align: center;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
     box-shadow: var(--shadow-sm);
 }
 
-.event-card-other-date-badge span { /* For the month part */
+.event-card-other-date-badge span {
     font-size: 0.75rem;
     text-transform: uppercase;
     display: block;
 }
 
 .event-card-other h3 {
-    font-size: 1.4rem; /* Slightly smaller than main event cards */
-    color: var(--primary-color); 
+    font-size: 1.4rem;
+    color: var(--primary-color);
     margin-bottom: var(--spacing-sm);
-    margin-top: 0; /* Reset top margin as badge is absolute */
-    padding-right: 70px; /* Ensure text doesn't overlap with badge */
+    margin-top: 0;
+    padding-right: var(--header-height);
 }
 
 .event-card-other-details {
@@ -1546,10 +1572,10 @@ footer {
     align-items: center;
 }
 
-.event-card-other-details i.fas { /* Be specific for font awesome icons */
+.event-card-other-details i.fas {
     margin-right: var(--spacing-sm);
-    color: var(--primary-color); /* Use primary color for icons in details */
-    width: 16px; 
+    color: var(--primary-color);
+    width: 16px;
     text-align: center;
 }
 
@@ -1558,13 +1584,13 @@ footer {
     color: var(--gray-color);
     margin-top: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .event-card-other .btn {
-    margin-top: auto; 
-    align-self: flex-start; 
-    background-color: var(--secondary-color); /* Different button color for distinction */
+    margin-top: auto;
+    align-self: flex-start;
+    background-color: var(--secondary-color);
     border-color: var(--secondary-color);
 }
 .event-card-other .btn:hover {
@@ -1575,26 +1601,146 @@ footer {
 /* ===== Coming Soon Page Styles ===== */
 .coming-soon-content {
     text-align: center;
-    padding: var(--spacing-lg) var(--spacing-sm); /* Use theme spacing */
-    padding-top: calc(70px + var(--spacing-lg)); /* Account for fixed header + original top padding */
+    padding: var(--spacing-lg) var(--spacing-sm);
+    padding-top: calc(var(--header-height) + var(--spacing-lg));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-color); /* Ensure it matches the body background */
-    flex-grow: 1; /* Allows this section to grow and fill available space */
+    background-color: var(--bg-color);
+    flex-grow: 1;
 }
 .coming-soon-content h1 {
-    font-size: 3em; /* Default for larger screens */
-    color: var(--text-color); /* Use theme text color */
-    margin-bottom: var(--spacing-md); /* Use theme spacing */
+    font-size: 3em;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
 }
 .coming-soon-content p {
-    font-size: 1.2em; /* Default for larger screens */
-    color: var(--gray-color); /* Use theme gray color */
-    margin-bottom: var(--spacing-lg); /* Use theme spacing */
+    font-size: 1.2em;
+    color: var(--gray-color);
+    margin-bottom: var(--spacing-lg);
 }
-/* Ensure the .btn class styles are applied correctly if not already global */
-.coming-soon-content .btn {
-    /* Assuming .btn styles from above are sufficient */
+
+/* ===== Lazy Loading Fade Effect ===== */
+.lazy-load-fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lazy-load-fade.loaded {
+    opacity: 1;
+}
+
+/* ===== Lightbox ===== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.lightbox.active {
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    display: block;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color var(--transition-normal);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-lightbox:hover {
+    color: var(--primary-color);
+}
+
+.lightbox-caption {
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* ===== Mobile Touch Target Improvements ===== */
+@media (max-width: 768px) {
+    /* Ensure minimum 44x44px touch targets */
+    .btn,
+    .filter-btn,
+    .social-icon,
+    .nav-links a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .filter-btn {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .hamburger {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 10px;
+    }
+
+    /* Improve form input touch targets */
+    input[type="email"],
+    input[type="text"],
+    .subscribe-input {
+        min-height: 44px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Footer link spacing for touch */
+    .footer-links li {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-links a {
+        display: inline-block;
+        padding: var(--spacing-xs) 0;
+    }
+
+    .footer-social .social-links a {
+        padding: var(--spacing-xs) 0;
+        min-height: 44px;
+    }
 }
